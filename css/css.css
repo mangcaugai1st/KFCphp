@@ -1,0 +1,189 @@
+body {
+    background: #FFF;
+    margin: 0 auto;
+}
+.header {
+    background: #FFF;
+    height: 130px;
+}
+.navList {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+}
+.navList li p {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: "Roboto", sans-serif;
+}
+.navList li a {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: "Roboto", sans-serif;
+    text-decoration: none;
+    color: #202124;
+}
+.navList li a:hover {
+    text-decoration: underline;
+    text-decoration-color: #f8012e;
+}
+.navList li p:hover {
+    text-decoration: underline;
+    text-decoration-color: #f8012e;
+    text-decoration-thickness: 2px;
+}
+.language p {
+    position: absolute;
+    right: 20%;
+    margin-top: 3%
+}
+.navList li button {
+    margin-top: 2%
+}
+.kfc-logo {
+    margin-left: 113px;
+}
+.login-icon, .cart-icon, .menu-icon {
+/*    border-radius: 50%; */
+    background-color: #FFFFFF;
+    border: none;
+}
+.login-icon:hover, .cart-icon:hover, .menu-icon:hover {
+    /*    border-radius: 50%; */
+    background-color: #e4002b;
+    border: none;
+}
+.menu-icon {
+    position: absolute;
+    right: 7.70%;
+}
+.cart-icon {
+    position: absolute;
+    right: 11.1%;
+}
+.login-icon {
+    position: absolute;
+    right: 14.6%;
+}
+.orderBar {
+    height: 90px;
+    background-color: #202124;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.orderBar p {
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #FFF;
+}
+
+.orderBtn {
+    width: 250px;
+    height: 60px;
+    border-radius: 50px;
+    padding: 8px 16px;
+    background-color: #e4002b;
+    border: none;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 20px;
+}
+.orderBtn:hover {
+    background-color: #f8012e;
+}
+
+.foodList {
+    width: 345px;
+    height: 300px;
+    box-shadow: 1px 1px 1px 1px;
+}
+.foodList img {
+    width: 345px;
+    height: 235px;
+}
+.foodList p {
+    font-size: 24px;
+    font-family: sans-serif;
+    font-weight: 700;
+}
+.gridFood {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+}
+
+h1 {
+    font-family: sans-serif;
+    font-size: 28px;
+}
+
+.foodCart {
+    width: 350px;
+    height: 490px;
+/*    border: 1px solid black; */
+    background-color: #202124;
+}
+.foodCart img {
+    width: 350px;
+    height: 330px;
+}
+.foodCart button {
+    width: 300px;
+    height: 55px;
+    border-radius: 30px;
+    border: none;
+    background-color: #E4002B;
+/*    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+ */
+    margin-left: 6.5%;
+    font-size: 17px;
+    font-family: sans-serif;
+    font-weight: 700;
+    color: #FFFFFF;
+}
+.foodCart button:hover {
+    background-color: #f8012e;
+}
+.foodCart div p {
+    font-family: sans-serif;
+    color: #FFFFFF;
+    font-size: 20px;
+}
+.footer_text {
+    color: #FFFFFF;
+    margin-left: 10%;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: sans-serif;
+}
+.foodCartContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center
+}
+.containerFood {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+}
+@media (max-width: 900px) {
+   .gridFood {
+       grid-template-columns: repeat(1, 1fr);
+    }
+    .foodCartContainer {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .containerFood {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+
+
+
+
