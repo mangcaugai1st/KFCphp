@@ -58,7 +58,8 @@
         <a href="login.php" target="_blank"><button class="login-icon"><img src="images/icon/person-circle-outline.png" alt=""></button></a>
       </li>
       <li>
-        <a href="cart.php" target="_blank"><button class="cart-icon"><img src="images/icon/cart.png" alt=""></button></a>
+        <a href="cart.php" target="_blank"><button class="cart-icon"><img src="images/icon/cart.png" alt=""<span><?php if (isset($_SESSION['cart'])) echo count($_SESSION['cart']);?></span></button></a>
+
          <!-- <a href="addcart.php" target="_blank"><img src="images/icon/cart.png" alt=""></a> -->
       </li>
       <li>
@@ -95,7 +96,7 @@
         array('foodName' => 'Cơm Gà Rán', 'image' => 'images/menus/Rice-F.Chicken.jpg', 'price' => '232000'),
         array('foodName' => '4 Phô Mai Viên', 'image' => 'images/menus/4-Chewy-Cheese.jpg', 'price' => '35000'),
     );
-    if (isset($_SESSION['cart'])) echo count($_SESSION['cart']);
+    //if (isset($_SESSION['cart'])) echo count($_SESSION['cart']);
     ?>
     <div class = "abc">
         <?php

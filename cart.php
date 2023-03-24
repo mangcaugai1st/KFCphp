@@ -4,6 +4,21 @@
     <meta charset="UTF-8">
     <title>Giỏ hàng của tôi</title>
     <link rel="stylesheet" href="css/css.css">
+    <style>
+        table {
+            margin-right: auto;
+            margin-left: auto;
+        }
+        table tr th {
+            width: 100px;
+            font-family: sans-serif;
+            font-size: 18px;
+            text-align: center;
+        }
+        table tr td {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 <div class="header">
@@ -45,6 +60,7 @@
     </button>
 </div>
 <h1 style="font-family: sans-serif; text-align: center">GIỎ HÀNG CỦA TÔI</h1>
+<!--
 <div style="display: flex">
     <div style="display: block; position: absolute; margin-left: 25%; margin-top: 10%">
         <h2 style="font-family: sans-serif">GIỎ HÀNG CỦA BẠN CÒN TRỐNG. <br> HÃY ĐẶT MÓN NGAY!</h2>
@@ -52,6 +68,7 @@
     </div>
     <img src="images/empty-cart.png" alt="" width="30%" height="10%" style="margin-left: 60%">
 </div>
+-->
 <?php
 session_start();
 ?>
@@ -59,19 +76,21 @@ session_start();
     <tr>
         <th>Tên món ăn</th>
         <th>Hình ảnh</th>
-        <th>Gía</th>
         <th>Số lượng</th>
         <th>Tiền</th>
-        <th>Xóa</th>
+        <!-- <th>Xóa</th> -->
     </tr>
     <?php foreach ($_SESSION['cart'] as $item) { ?>
         <tr>
             <td><?php echo $item['foodName'] ?></td>
-            <td><img src='<?php echo $item['image'] ?>' alt=""></td>
-            <td><?php echo $item['price']?></td>
+            <td><img src='<?php echo $item['image'] ?>' alt="" style="width: 250px"></td>
             <td>1</td>
             <td><?php  echo $item['price']?></td>
-            <td>Xóa</td>
+            <td>
+                <form action="" method="post">
+                    <button type="submit" name ="remove">Xóa</button>
+                </form>
+            </td>
         </tr>
     <?php } ?>
     <tr>
@@ -87,6 +106,12 @@ session_start();
         </td>
     </tr>
 </table>
+<?php
+    if(isset($_POST['remove'])) {
+        unset($_SESSION['cart']);
+        header("Location: cart.php");
+    }
+?>
 <div style="display: grid; background-color: #202124; grid-template-columns: 70% 30%">
     <div class="footer_text">
         <h2>CÔNG TY LIÊN DOANH TNHH KFC VIỆT NAM</h2>

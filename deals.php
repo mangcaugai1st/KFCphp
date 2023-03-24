@@ -54,7 +54,7 @@
         </li>
         <li>
             <a href="cart.php" target="_blank">
-                <button class="cart-icon"><img src="images/icon/cart.png" alt=""></button>
+                <button class="cart-icon"><img src="images/icon/cart.png" alt=""><span><?php if (isset($_SESSION['cart'])) echo count($_SESSION['cart']);?></span></button>
             </a>
         </li>
         <li>
@@ -118,7 +118,7 @@ $products = array(
     array('foodName' => 'Combo nhóm 3', 'image' => 'images/D8-new.jpg', 'price' => '232000'),
     array('foodName' => 'Combo nhóm 4', 'image' => 'images/6-Fried-Chicken-new.jpg', 'price' => '205000'),
 );
-if (isset($_SESSION['cart'])) echo count($_SESSION['cart']);
+//if (isset($_SESSION['cart'])) echo count($_SESSION['cart']);
 ?>
 <div class = "abc">
     <?php

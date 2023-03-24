@@ -72,13 +72,13 @@
         </td>
         <td>
             <h1 style="text-align: center">ĐĂNG NHẬP</h1>
-            <form>
+            <form method="post">
                 <div class="container">
                     <label>Địa chỉ email của bạn: </label>
                     <input type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Enter your email" name="username" required>
                     <label>Mật khẩu: </label>
                     <input type="password" placeholder="Enter Password" name="password" required>
-                    <button type="submit" style="width: 100%; height: 50px; border-radius: 30px;background-color: #f8012e; color: white; font-family: sans-serif; font-size: 20px; font-weight: 700">Đăng nhập</button>
+                    <button name ="post" type="submit" style="width: 100%; height: 50px; border-radius: 30px;background-color: #f8012e; color: white; font-family: sans-serif; font-size: 20px; font-weight: 700">Đăng nhập</button>
                     <h2>Hoặc tiếp tục với: </h2>
                     <button type="submit" style="width: 100%; height: 50px; border-radius: 30px;background-color: #3b5998; color: white; font-family: sans-serif; font-size: 20px; font-weight: 700">Đăng nhập bằng Facebook</button>
                     <button type="submit" style="width: 100%; height: 50px; border-radius: 30px; margin-top: 10px;background-color: #000; color: white; font-family: sans-serif; font-size: 20px; font-weight: 700">Đăng nhập bằng Apple</button>
@@ -88,6 +88,23 @@
         </td>
     </tr>
 </table>
+<?php
+if (isset($_POST['post']))
+{
+    if ($_POST['password'] == '123' && $_POST['username'] == 'khoadmps27060@ftp.edu.vn')
+    {
+        echo "<script type='text/javascript'>alert('Đăng nhập thành công');</script>";
+    }
+    else
+    {
+        echo "<script type='text/javascript'>alert('Đăng nhập thất bại');</script>";
+    }
+}
+else
+{
+    echo "<script type='text/javascript'>alert('Đăng nhập thất bại');</script>";
+}
+?>
 <div style="display: grid; background-color: #202124; grid-template-columns: 70% 30%">
     <div class="footer_text">
         <h2>CÔNG TY LIÊN DOANH TNHH KFC VIỆT NAM</h2>

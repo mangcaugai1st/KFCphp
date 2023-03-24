@@ -55,11 +55,13 @@ body {
 }
 .menu-icon {
     position: absolute;
-    right: 7.70%;
+    right: 5%;
 }
 .cart-icon {
     position: absolute;
-    right: 11.1%;
+    right: 10%
+    /*margin-left: 10px;
+    margin-right: 10px;*/
 }
 .login-icon {
     position: absolute;
