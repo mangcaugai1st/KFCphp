@@ -88,13 +88,13 @@
     if (!isset($_SESSION['cart'])) $_SESSION['cart'] = array();
     //session_destroy();
     $products = array(
-        array('id' =>'sp1', 'foodName' => '1 Miếng Gà Rán', 'image' => 'images/menus/1-Fried-Chicken.jpg', 'price' => '36000'),
-        array('id' =>'sp2', 'foodName' => '2 Miếng Gà Rán', 'image' => 'images/menus/2-Fried-Chicken.jpg', 'price' => '71000'),
-        array('id' =>'sp3', 'foodName' => '3 Miếng Gà Rán', 'image' => 'images/menus/3-Fried-Chicken.jpg', 'price' => '105000'),
-        array('id' =>'sp4', 'foodName' => '6 Miếng Gà Rán', 'image' => 'images/menus/6-Fried-Chicken-new.jpg', 'price' => '205000'),
-        array('id' =>'sp5', 'foodName' => 'Burger Tôm', 'image' => 'images/menus/Burger-Shrimp.jpg', 'price' => '45000'),
-        array('id' =>'sp6', 'foodName' => 'Cơm Gà Rán', 'image' => 'images/menus/Rice-F.Chicken.jpg', 'price' => '232000'),
-        array('id' =>'sp7', 'foodName' => '4 Phô Mai Viên', 'image' => 'images/menus/4-Chewy-Cheese.jpg', 'price' => '35000'),
+        array('id' =>'sp1', 'foodName' => '1 Miếng Gà Rán', 'image' => 'images/menus/1-Fried-Chicken.jpg', 'price' => '36000', 'hot' => '1', 'sale' => '100'),
+        array('id' =>'sp2', 'foodName' => '2 Miếng Gà Rán', 'image' => 'images/menus/2-Fried-Chicken.jpg', 'price' => '71000', 'hot' => '0', 'sale' => '50'),
+        array('id' =>'sp3', 'foodName' => '3 Miếng Gà Rán', 'image' => 'images/menus/3-Fried-Chicken.jpg', 'price' => '105000', 'hot' => '0', 'sale' => '100'),
+        array('id' =>'sp4', 'foodName' => '6 Miếng Gà Rán', 'image' => 'images/menus/6-Fried-Chicken-new.jpg', 'price' => '205000', 'hot' => '1', 'sale' => '50'),
+        array('id' =>'sp5', 'foodName' => 'Burger Tôm', 'image' => 'images/menus/Burger-Shrimp.jpg', 'price' => '45000', 'hot' => '0', 'sale' => '100'),
+        array('id' =>'sp6', 'foodName' => 'Cơm Gà Rán', 'image' => 'images/menus/Rice-F.Chicken.jpg', 'price' => '232000', 'hot' => '1', 'sale' => '50'),
+        array('id' =>'sp7', 'foodName' => '4 Phô Mai Viên', 'image' => 'images/menus/4-Chewy-Cheese.jpg', 'price' => '35000', 'hot' => '1', 'sale' => '100'),
     );
     //if (isset($_SESSION['cart'])) echo count($_SESSION['cart']);
     ?>
@@ -114,6 +114,30 @@
                     </div>';
     }
     ?>
+    </div>
+    <hr>
+    <div style="display: flex; justify-items: center; justify-content: center">
+        <img src="images/icon/kfc_logo_icon_181306.png" alt="" width="100" height="100">
+        <h1>Món ăn bán chạy</h1>
+    </div>
+    <div class = "abc">
+        <?php
+        foreach ($products as $index => $product) {
+            if($product['sale'] > 50) {
+                echo '<div class="sanpham">
+                    <form action="" method="post" style = "width: 350px;height: 490px; /*    border: 1px solid black; */background-color: #202124;">
+                    <a href="detailProduct.php?id=' . $product['id'] . '" target="_blank"><img src="' . $product['image'] . '" alt="" ></a>
+                        <div style="display: flex; font-family: sans-serif; color: #FFFFFF; font-size: 20px;">
+                            <p style="margin-left: 5%">' . $product['foodName'] . '</p>
+                            <p style="margin-left: 30%">' . $product['price'] . '</p>
+                        </div>
+                        <input type="hidden" name="index" value="' . $index . '">
+                        <input type="submit" name="dathang" value="Đặt hàng" style="width: 300px; height: 55px; border-radius: 30px; border: none; background-color: #E4002B; margin-left: 6.5%;font-size: 17px; font-family: sans-serif; font-weight: 700; color: #FFFFFF;">
+                     </form>
+                    </div>';
+            }
+        }
+        ?>
     </div>
     <?php
     //Thêm sản phẩm vào giỏ hàng
