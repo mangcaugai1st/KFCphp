@@ -88,13 +88,13 @@
     if (!isset($_SESSION['cart'])) $_SESSION['cart'] = array();
     //session_destroy();
     $products = array(
-        array('foodName' => '1 Miếng Gà Rán', 'image' => 'images/menus/1-Fried-Chicken.jpg', 'price' => '36000'),
-        array('foodName' => '2 Miếng Gà Rán', 'image' => 'images/menus/2-Fried-Chicken.jpg', 'price' => '71000'),
-        array('foodName' => '3 Miếng Gà Rán', 'image' => 'images/menus/3-Fried-Chicken.jpg', 'price' => '105000'),
-        array('foodName' => '6 Miếng Gà Rán', 'image' => 'images/menus/6-Fried-Chicken-new.jpg', 'price' => '205000'),
-        array('foodName' => 'Burger Tôm', 'image' => 'images/menus/Burger-Shrimp.jpg', 'price' => '45000'),
-        array('foodName' => 'Cơm Gà Rán', 'image' => 'images/menus/Rice-F.Chicken.jpg', 'price' => '232000'),
-        array('foodName' => '4 Phô Mai Viên', 'image' => 'images/menus/4-Chewy-Cheese.jpg', 'price' => '35000'),
+        array('id' =>'sp1', 'foodName' => '1 Miếng Gà Rán', 'image' => 'images/menus/1-Fried-Chicken.jpg', 'price' => '36000'),
+        array('id' =>'sp2', 'foodName' => '2 Miếng Gà Rán', 'image' => 'images/menus/2-Fried-Chicken.jpg', 'price' => '71000'),
+        array('id' =>'sp3', 'foodName' => '3 Miếng Gà Rán', 'image' => 'images/menus/3-Fried-Chicken.jpg', 'price' => '105000'),
+        array('id' =>'sp4', 'foodName' => '6 Miếng Gà Rán', 'image' => 'images/menus/6-Fried-Chicken-new.jpg', 'price' => '205000'),
+        array('id' =>'sp5', 'foodName' => 'Burger Tôm', 'image' => 'images/menus/Burger-Shrimp.jpg', 'price' => '45000'),
+        array('id' =>'sp6', 'foodName' => 'Cơm Gà Rán', 'image' => 'images/menus/Rice-F.Chicken.jpg', 'price' => '232000'),
+        array('id' =>'sp7', 'foodName' => '4 Phô Mai Viên', 'image' => 'images/menus/4-Chewy-Cheese.jpg', 'price' => '35000'),
     );
     //if (isset($_SESSION['cart'])) echo count($_SESSION['cart']);
     ?>
@@ -103,7 +103,7 @@
     foreach ($products as $index => $product) {
         echo '<div class="sanpham">
                     <form action="" method="post" style = "width: 350px;height: 490px; /*    border: 1px solid black; */background-color: #202124;">
-                        <img src="' . $product['image'] . '" alt="">
+                    <a href="detailProduct.php?id='.$product['id'].'" target="_blank"><img src="'.$product['image'].'" alt="" ></a>
                         <div style="display: flex; font-family: sans-serif; color: #FFFFFF; font-size: 20px;">
                             <p style="margin-left: 5%">' . $product['foodName'] . '</p>
                             <p style="margin-left: 30%">'. $product['price'] . '</p>

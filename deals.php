@@ -113,10 +113,10 @@ session_start();
 if (!isset($_SESSION['cart'])) $_SESSION['cart'] = array();
 //session_destroy();
 $products = array(
-    array('foodName' => 'Combo nhóm 1', 'image' => 'images/D6.jpg', 'price' => '175000'),
-    array('foodName' => 'Combo nhóm 2', 'image' => 'images/D7-new.jpg', 'price' => '195000'),
-    array('foodName' => 'Combo nhóm 3', 'image' => 'images/D8-new.jpg', 'price' => '232000'),
-    array('foodName' => 'Combo nhóm 4', 'image' => 'images/6-Fried-Chicken-new.jpg', 'price' => '205000'),
+    array('id' =>'sp8', 'foodName' => 'Combo nhóm 1', 'image' => 'images/D6.jpg', 'price' => '175000'),
+    array('id' =>'sp9', 'foodName' => 'Combo nhóm 2', 'image' => 'images/D7-new.jpg', 'price' => '195000'),
+    array('id' =>'sp10', 'foodName' => 'Combo nhóm 3', 'image' => 'images/D8-new.jpg', 'price' => '232000'),
+    array('id' =>'sp11', 'foodName' => 'Combo nhóm 4', 'image' => 'images/6-Fried-Chicken-new.jpg', 'price' => '205000'),
 );
 //if (isset($_SESSION['cart'])) echo count($_SESSION['cart']);
 ?>
@@ -125,7 +125,7 @@ $products = array(
     foreach ($products as $index => $product) {
         echo '<div class="sanpham">
                     <form action="" method="post" style = "width: 350px;height: 490px; /*    border: 1px solid black; */background-color: #202124;">
-                        <img src="' . $product['image'] . '" alt="">
+                        <a href="detailProduct.php?id='.$product['id'].'" target="_blank"><img src="'.$product['image'].'" alt="" ></a>
                         <div style="display: flex; font-family: sans-serif; color: #FFFFFF; font-size: 20px;">
                             <p style="margin-left: 5%">' . $product['foodName'] . '</p>
                             <p style="margin-left: 30%">'. $product['price'] . '</p>
