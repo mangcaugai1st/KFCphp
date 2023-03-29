@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Chi tiết sản phẩm</title>
     <link rel="stylesheet" href="css/css.css">
 </head>
 <body>
@@ -35,6 +35,17 @@
             <button class="menu-icon"><img src="images/icon/menu.png" alt=""></button>
         </li>
     </ul>
+</div>
+<div style="margin-left: 75%; margin-right: 0% ;font-family: sans-serif; font-size: 20px">
+    <?php
+    if(isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
+        if($_COOKIE['username'] == 'khoadmps27060@ftp.edu.vn' && $_COOKIE['password'] == "123") {
+            echo "<p>Chào <span style='color: #f8012e'>$_COOKIE[username]</span></p>";
+        }
+        //else echo "Đăng nhập";
+    }
+    else echo "<p style='margin-left: 25%; margin-right: 10%'>Đăng nhập</p>";
+    ?>
 </div>
 <?php
 $products = array(

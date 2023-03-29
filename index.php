@@ -38,6 +38,17 @@
             </li>
         </ul>
     </div>
+    <div style="margin-left: 75%; margin-right: 0% ;font-family: sans-serif; font-size: 20px">
+        <?php
+        if(isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
+            if($_COOKIE['username'] == 'khoadmps27060@ftp.edu.vn' && $_COOKIE['password'] == "123") {
+                echo "<p>Chào <span style='color: #f8012e'>$_COOKIE[username]</span></p>";
+            }
+            //else echo "Đăng nhập";
+        }
+        else echo "<p style='margin-left: 25%; margin-right: 10%'>Đăng nhập</p>";
+        ?>
+    </div>
     <div class="orderBar">
         <p style="margin-right: 10px; margin-top: 20px">Đặt Ngay</p>
         <img src="images/icon/2830305.png" alt="" width="50" height="50" style="margin-right: 10px">

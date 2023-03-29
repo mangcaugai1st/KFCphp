@@ -58,7 +58,7 @@
         <a href="login.php" target="_blank"><button class="login-icon"><img src="images/icon/person-circle-outline.png" alt=""></button></a>
       </li>
       <li>
-        <a href="cart.php" target="_blank"><button class="cart-icon"><img src="images/icon/cart.png" alt=""<span><?php if (isset($_SESSION['cart'])) echo count($_SESSION['cart']);?></span></button></a>
+        <a href="cart.php" target="_blank"><button class="cart-icon"><img src="images/icon/cart.png" alt=""<span><?php if (isset($_SESSION['cart'])) { $count = 0;foreach ($_SESSION['cart'] as $p) {$count+=$p['quantity'];} echo $count;}?></span></button></a>
 
          <!-- <a href="addcart.php" target="_blank"><img src="images/icon/cart.png" alt=""></a> -->
       </li>
@@ -66,6 +66,17 @@
         <button class="menu-icon"><img src="images/icon/menu.png" alt=""></button>
       </li>
     </ul>
+  </div>
+  <div style="margin-left: 75%; margin-right: 0 ;font-family: sans-serif; font-size: 20px">
+      <?php
+      if(isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
+          if($_COOKIE['username'] == 'khoadmps27060@ftp.edu.vn' && $_COOKIE['password'] == "123") {
+              echo "<p>Chào <span style='color: #f8012e'>$_COOKIE[username]</span></p>";
+          }
+          //else echo "Đăng nhập";
+      }
+      else echo "<p style='margin-left: 25%; margin-right: 10%'>Đăng nhập</p>";
+      ?>
   </div>
   <div class="orderBar">
     <p style="margin-right: 10px; margin-top: 20px">Đặt Ngay</p>
@@ -83,21 +94,22 @@
   </div>
     <!--<a href="cart.php" target="_blank"><img src="images/icon/cart.png" alt=""></a> -->
 
+
     <?php
-    //session_start();
     if (!isset($_SESSION['cart'])) $_SESSION['cart'] = array();
     //session_destroy();
     $products = array(
-        array('id' =>'sp1', 'foodName' => '1 Miếng Gà Rán', 'image' => 'images/menus/1-Fried-Chicken.jpg', 'price' => '36000', 'hot' => '1', 'sale' => '100'),
-        array('id' =>'sp2', 'foodName' => '2 Miếng Gà Rán', 'image' => 'images/menus/2-Fried-Chicken.jpg', 'price' => '71000', 'hot' => '0', 'sale' => '50'),
-        array('id' =>'sp3', 'foodName' => '3 Miếng Gà Rán', 'image' => 'images/menus/3-Fried-Chicken.jpg', 'price' => '105000', 'hot' => '0', 'sale' => '100'),
-        array('id' =>'sp4', 'foodName' => '6 Miếng Gà Rán', 'image' => 'images/menus/6-Fried-Chicken-new.jpg', 'price' => '205000', 'hot' => '1', 'sale' => '50'),
-        array('id' =>'sp5', 'foodName' => 'Burger Tôm', 'image' => 'images/menus/Burger-Shrimp.jpg', 'price' => '45000', 'hot' => '0', 'sale' => '100'),
-        array('id' =>'sp6', 'foodName' => 'Cơm Gà Rán', 'image' => 'images/menus/Rice-F.Chicken.jpg', 'price' => '232000', 'hot' => '1', 'sale' => '50'),
-        array('id' =>'sp7', 'foodName' => '4 Phô Mai Viên', 'image' => 'images/menus/4-Chewy-Cheese.jpg', 'price' => '35000', 'hot' => '1', 'sale' => '100'),
+        array('id' =>'sp1', 'foodName' => '1 Miếng Gà Rán', 'image' => 'images/menus/1-Fried-Chicken.jpg', 'price' => '36000', 'quantity' => 1, 'hot' => '1', 'sale' => '100'),
+        array('id' =>'sp2', 'foodName' => '2 Miếng Gà Rán', 'image' => 'images/menus/2-Fried-Chicken.jpg', 'price' => '71000', 'quantity' => 1, 'hot' => '0', 'sale' => '50'),
+        array('id' =>'sp3', 'foodName' => '3 Miếng Gà Rán', 'image' => 'images/menus/3-Fried-Chicken.jpg', 'price' => '105000', 'quantity' => 1, 'hot' => '0', 'sale' => '100'),
+        array('id' =>'sp4', 'foodName' => '6 Miếng Gà Rán', 'image' => 'images/menus/6-Fried-Chicken-new.jpg', 'price' => '205000', 'quantity' => 1, 'hot' => '1', 'sale' => '50'),
+        array('id' =>'sp5', 'foodName' => 'Burger Tôm', 'image' => 'images/menus/Burger-Shrimp.jpg', 'price' => '45000', 'quantity' => 1, 'hot' => '0', 'sale' => '100'),
+        array('id' =>'sp6', 'foodName' => 'Cơm Gà Rán', 'image' => 'images/menus/Rice-F.Chicken.jpg', 'price' => '232000', 'quantity' => 1, 'hot' => '1', 'sale' => '50'),
+        array('id' =>'sp7', 'foodName' => '4 Phô Mai Viên', 'image' => 'images/menus/4-Chewy-Cheese.jpg', 'price' => '35000', 'quantity' => 1, 'hot' => '1', 'sale' => '100'),
     );
     //if (isset($_SESSION['cart'])) echo count($_SESSION['cart']);
     ?>
+
     <div class = "abc">
         <?php
     foreach ($products as $index => $product) {
@@ -108,6 +120,7 @@
                             <p style="margin-left: 5%">' . $product['foodName'] . '</p>
                             <p style="margin-left: 30%">'. $product['price'] . '</p>
                         </div>
+                        <input type="hidden" name="id" value="'.$product['id'].'">
                         <input type="hidden" name="index" value="' . $index . '">
                         <input type="submit" name="dathang" value="Đặt hàng" style="width: 300px; height: 55px; border-radius: 30px; border: none; background-color: #E4002B; margin-left: 6.5%;font-size: 17px; font-family: sans-serif; font-weight: 700; color: #FFFFFF;">
                      </form>
@@ -131,6 +144,7 @@
                             <p style="margin-left: 5%">' . $product['foodName'] . '</p>
                             <p style="margin-left: 30%">' . $product['price'] . '</p>
                         </div>
+                        <input type="hidden" name="id" value="'.$product['id'].'">
                         <input type="hidden" name="index" value="' . $index . '">
                         <input type="submit" name="dathang" value="Đặt hàng" style="width: 300px; height: 55px; border-radius: 30px; border: none; background-color: #E4002B; margin-left: 6.5%;font-size: 17px; font-family: sans-serif; font-weight: 700; color: #FFFFFF;">
                      </form>
@@ -140,11 +154,28 @@
         ?>
     </div>
     <?php
-    //Thêm sản phẩm vào giỏ hàng
+    //Thêm
+    // sản
+    // phẩm
+    // vào
+    // giỏ
+    // hàng
     if (isset($_POST['dathang']) && ($_POST['dathang'])) {
+        $check = true;
+        $id = $_POST['id'];
         $index = $_POST['index'];
-        array_push($_SESSION['cart'], $products[$index]);
-        //header("Refresh:0");
+        if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
+            foreach ($_SESSION['cart'] as $key=>$item) {
+                if ($item['id'] == $id) {
+                    $_SESSION['cart'][$key]['quantity'] += 1;
+                    $check = false;
+                }
+            }
+        }
+        if($check == true) {
+            array_push($_SESSION['cart'], $products[$index]);
+        }
+        header("Refresh:0");
     }
     ?>
   <img src="images/Component%2012.png" alt="" width="100%" style="margin-top: 50px">
