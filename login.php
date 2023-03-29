@@ -91,18 +91,19 @@
 <?php
 if (isset($_POST['post']))
 {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
     if ($_POST['password'] == '123' && $_POST['username'] == 'khoadmps27060@ftp.edu.vn')
     {
         echo "<script type='text/javascript'>alert('Đăng nhập thành công');</script>";
+        setcookie('username', $username, time()+10,"/");
+        setcookie('password', $password, time()+10,"/");
+        header('Location: menus.php');
     }
     else
     {
         echo "<script type='text/javascript'>alert('Đăng nhập thất bại');</script>";
     }
-}
-else
-{
-    echo "<script type='text/javascript'>alert('Đăng nhập thất bại');</script>";
 }
 ?>
 <div style="display: grid; background-color: #202124; grid-template-columns: 70% 30%">

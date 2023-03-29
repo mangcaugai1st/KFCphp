@@ -49,6 +49,17 @@
         </li>
     </ul>
 </div>
+<div style="margin-left: 75%; margin-right: 0% ;font-family: sans-serif; font-size: 20px">
+    <?php
+    if(isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
+        if($_COOKIE['username'] == 'khoadmps27060@ftp.edu.vn' && $_COOKIE['password'] == "123") {
+            echo "<p>Chào <span style='color: #f8012e'>$_COOKIE[username]</span></p>";
+        }
+        //else echo "Đăng nhập";
+    }
+    else echo "<p style='margin-left: 25%; margin-right: 10%'>Đăng nhập</p>";
+    ?>
+</div>
 <div class="orderBar">
     <p style="margin-right: 10px; margin-top: 20px">Đặt Ngay</p>
     <img src="images/icon/2830305.png" alt="" width="50" height="50" style="margin-right: 10px">
@@ -76,20 +87,19 @@ session_start();
     <tr>
         <th>Tên món ăn</th>
         <th>Hình ảnh</th>
+        <th>Giá tiền</th>
         <th>Số lượng</th>
-        <th>Tiền</th>
-        <!-- <th>Xóa</th> -->
     </tr>
-    <?php foreach ($_SESSION['cart'] as $item) { ?>
+    <?php if(isset($_SESSION['cart'])) foreach ($_SESSION['cart'] as $index=>$item) { ?>
         <tr>
             <td><?php echo $item['foodName'] ?></td>
             <td><img src='<?php echo $item['image'] ?>' alt="" style="width: 250px"></td>
-            <td>1</td>
             <td><?php  echo $item['price']?></td>
             <td>
-                <form action="" method="post">
-                    <button type="submit" name ="remove">Xóa</button>
-                </form>
+                <?php echo $item['quantity'] ?>
+            </td>
+            <td>
+                <button style="text-decoration: none; border: none; border-radius: 30px; background-color: #f8012e; width: 100px; padding: 10px"><a style="text-decoration: none; color: white; font-family: sans-serif;" href="cart.php?remove=<?=$index?>">Xóa</a></button>
             </td>
         </tr>
     <?php } ?>
@@ -99,19 +109,28 @@ session_start();
             <?php
             $tongtien= 0;
             foreach ($_SESSION['cart'] as $item) {
-                $tongtien += $item['price'];
+                $tongtien += $item['price'] * $item['quantity'];
             }
             echo "$tongtien đ";
             ?>
         </td>
     </tr>
 </table>
+<a href="">Tiếp tục mua hàng</a>
+<a href="cart.php?remove=all">Xóa giỏ hàng</a>
 <?php
-    if(isset($_POST['remove'])) {
-        unset($_SESSION['cart']);
-        header("Location: cart.php");
+    if(isset($_GET['remove'])) {
+        if($_GET['remove'] == 'all') {
+            unset($_SESSION['cart']);
+            header("Location: menus.php");
+        } else {
+            $index = $_GET['remove'];
+            unset($_SESSION['cart'][$index]);
+            header("Location: cart.php");
+        }
     }
 ?>
+
 <div style="display: grid; background-color: #202124; grid-template-columns: 70% 30%">
     <div class="footer_text">
         <h2>CÔNG TY LIÊN DOANH TNHH KFC VIỆT NAM</h2>

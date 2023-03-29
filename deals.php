@@ -62,6 +62,17 @@
         </li>
     </ul>
 </div>
+<div style="margin-left: 75%; margin-right: 0% ;font-family: sans-serif; font-size: 20px">
+    <?php
+    if(isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
+        if($_COOKIE['username'] == 'khoadmps27060@ftp.edu.vn' && $_COOKIE['password'] == "123") {
+            echo "<p>Chào <span style='color: #f8012e'>$_COOKIE[username]</span></p>";
+        }
+        //else echo "Đăng nhập";
+    }
+    else echo "<p style='margin-left: 25%; margin-right: 10%'>Đăng nhập</p>";
+    ?>
+</div>
 <div class="orderBar">
     <p style="margin-right: 10px; margin-top: 20px">Đặt Ngay</p>
     <img src="images/icon/2830305.png" alt="" width="50" height="50" style="margin-right: 10px">
@@ -113,10 +124,10 @@ session_start();
 if (!isset($_SESSION['cart'])) $_SESSION['cart'] = array();
 //session_destroy();
 $products = array(
-    array('id' =>'sp8', 'foodName' => 'Combo nhóm 1', 'image' => 'images/D6.jpg', 'price' => '175000'),
-    array('id' =>'sp9', 'foodName' => 'Combo nhóm 2', 'image' => 'images/D7-new.jpg', 'price' => '195000'),
-    array('id' =>'sp10', 'foodName' => 'Combo nhóm 3', 'image' => 'images/D8-new.jpg', 'price' => '232000'),
-    array('id' =>'sp11', 'foodName' => 'Combo nhóm 4', 'image' => 'images/6-Fried-Chicken-new.jpg', 'price' => '205000'),
+    array('id' =>'sp8', 'foodName' => 'Combo nhóm 1', 'image' => 'images/D6.jpg', 'price' => '175000', 'quantity' => 1),
+    array('id' =>'sp9', 'foodName' => 'Combo nhóm 2', 'image' => 'images/D7-new.jpg', 'price' => '195000', 'quantity' => 1),
+    array('id' =>'sp10', 'foodName' => 'Combo nhóm 3', 'image' => 'images/D8-new.jpg', 'price' => '232000', 'quantity' => 1),
+    array('id' =>'sp11', 'foodName' => 'Combo nhóm 4', 'image' => 'images/6-Fried-Chicken-new.jpg', 'price' => '205000', 'quantity' => 1),
 );
 //if (isset($_SESSION['cart'])) echo count($_SESSION['cart']);
 ?>
@@ -130,6 +141,7 @@ $products = array(
                             <p style="margin-left: 5%">' . $product['foodName'] . '</p>
                             <p style="margin-left: 30%">'. $product['price'] . '</p>
                         </div>
+                        <input type="hidden" name="id" value="'.$product['id'].'">
                         <input type="hidden" name="index" value="' . $index . '">
                         <input type="submit" name="dathang" value="Đặt hàng" style="width: 300px; height: 55px; border-radius: 30px; border: none; background-color: #E4002B; margin-left: 6.5%;font-size: 17px; font-family: sans-serif; font-weight: 700; color: #FFFFFF;">
                      </form>
@@ -137,11 +149,29 @@ $products = array(
     }
     ?>
 </div>
+
 <?php
-//Thêm sản phẩm vào giỏ hàng
+//Thêm
+// sản
+// phẩm
+// vào
+// giỏ
+// hàng
 if (isset($_POST['dathang']) && ($_POST['dathang'])) {
+    $check = true;
+    $id = $_POST['id'];
     $index = $_POST['index'];
-    array_push($_SESSION['cart'], $products[$index]);
+    if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
+        foreach ($_SESSION['cart'] as $key=>$item) {
+            if ($item['id'] == $id) {
+                $_SESSION['cart'][$key]['quantity'] += 1;
+                $check = false;
+            }
+        }
+    }
+    if($check == true) {
+        array_push($_SESSION['cart'], $products[$index]);
+    }
     //header("Refresh:0");
 }
 ?>
