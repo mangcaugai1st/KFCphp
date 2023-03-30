@@ -96,7 +96,9 @@ session_start();
             <td><img src='<?php echo $item['image'] ?>' alt="" style="width: 250px"></td>
             <td><?php  echo $item['price']?></td>
             <td>
+                <button><a style="text-decoration: none" href="cart.php?decrease=<?=$index?>">-</a></button>
                 <?php echo $item['quantity'] ?>
+                <button><a style="text-decoration: none"href="cart.php?increase=<?=$index?>">+</a></button>
             </td>
             <td>
                 <button style="text-decoration: none; border: none; border-radius: 30px; background-color: #f8012e; width: 100px; padding: 10px"><a style="text-decoration: none; color: white; font-family: sans-serif;" href="cart.php?remove=<?=$index?>">Xóa</a></button>
@@ -129,6 +131,16 @@ session_start();
             header("Location: cart.php");
         }
     }
+if(isset($_GET['increase'])){
+    $index=$_GET['increase'];
+    $_SESSION['cart'][$index]['quantity']+=1;
+    header("Location: cart.php");
+}
+if(isset($_GET['decrease'])){
+    $index=$_GET['decrease'];
+    $_SESSION['cart'][$index]['quantity']-=1;
+    header("Location: cart.php");
+}
 ?>
 
 <div style="display: grid; background-color: #202124; grid-template-columns: 70% 30%">
