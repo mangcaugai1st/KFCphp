@@ -137,9 +137,9 @@ $products = array(
         echo '<div class="sanpham">
                     <form action="" method="post" style = "width: 350px;height: 490px; /*    border: 1px solid black; */background-color: #202124;">
                         <a href="detailProduct.php?id='.$product['id'].'" target="_blank"><img src="'.$product['image'].'" alt="" ></a>
-                        <div style="display: flex; font-family: sans-serif; color: #FFFFFF; font-size: 20px;">
-                            <p style="margin-left: 5%">' . $product['foodName'] . '</p>
-                            <p style="margin-left: 30%">'. $product['price'] . '</p>
+                        <div style="display: flex; justify-content: space-around ; font-family: sans-serif; color: #FFFFFF; font-size: 20px;">
+                            <p>' . $product['foodName'] . '</p>                            
+                            <p>' . number_format($product['price'], 0, '', ','). ' đ' .'</p>
                         </div>
                         <input type="hidden" name="id" value="'.$product['id'].'">
                         <input type="hidden" name="index" value="' . $index . '">

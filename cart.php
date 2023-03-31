@@ -94,7 +94,7 @@ session_start();
         <tr>
             <td><?php echo $item['foodName'] ?></td>
             <td><img src='<?php echo $item['image'] ?>' alt="" style="width: 250px"></td>
-            <td><?php  echo $item['price']?></td>
+            <td><?php echo number_format($item['price'], 0, '', ','). ' đ'; ?></td>
             <td>
                 <button><a style="text-decoration: none" href="cart.php?decrease=<?=$index?>">-</a></button>
                 <?php echo $item['quantity'] ?>
@@ -106,19 +106,19 @@ session_start();
         </tr>
     <?php } ?>
     <tr>
-        <td colspan="4">Tổng tiền</td>
-        <td colspan="2">
+        <td colspan="4" style="font-size: 30px; color:#f8012e; font-weight: bold">Tổng tiền:</td>
+        <td colspan="2" style="font-size: 25px">
             <?php
             $tongtien= 0;
             foreach ($_SESSION['cart'] as $item) {
                 $tongtien += $item['price'] * $item['quantity'];
             }
-            echo "$tongtien đ";
+            echo number_format($tongtien, 0, '', ','). ' đ';
             ?>
         </td>
     </tr>
 </table>
-<a href="">Tiếp tục mua hàng</a>
+<a href="menus.php">Tiếp tục mua hàng</a>
 <a href="cart.php?remove=all">Xóa giỏ hàng</a>
 <?php
     if(isset($_GET['remove'])) {
