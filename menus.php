@@ -63,7 +63,8 @@
          <!-- <a href="addcart.php" target="_blank"><img src="images/icon/cart.png" alt=""></a> -->
       </li>
       <li>
-        <button class="menu-icon"><img src="images/icon/menu.png" alt=""></button>
+          <!--<button class="menu-icon"><img src="images/icon/menu.png" alt=""></button>-->
+          <a href="admin.php" target="_blank"><button class="menu-icon"><img src="images/icon/menu.png" alt=""></button></a>
       </li>
     </ul>
   </div>
@@ -96,17 +97,10 @@
 
 
     <?php
+    include 'connectDB.php';
+    $products = connectDB();
     if (!isset($_SESSION['cart'])) $_SESSION['cart'] = array();
     //session_destroy();
-    $products = array(
-        array('id' =>'sp1', 'foodName' => '1 Miếng Gà Rán', 'image' => 'images/menus/1-Fried-Chicken.jpg', 'price' => '36000', 'quantity' => 1, 'hot' => '1', 'sale' => '100'),
-        array('id' =>'sp2', 'foodName' => '2 Miếng Gà Rán', 'image' => 'images/menus/2-Fried-Chicken.jpg', 'price' => '71000', 'quantity' => 1, 'hot' => '0', 'sale' => '50'),
-        array('id' =>'sp3', 'foodName' => '3 Miếng Gà Rán', 'image' => 'images/menus/3-Fried-Chicken.jpg', 'price' => '105000', 'quantity' => 1, 'hot' => '0', 'sale' => '100'),
-        array('id' =>'sp4', 'foodName' => '6 Miếng Gà Rán', 'image' => 'images/menus/6-Fried-Chicken-new.jpg', 'price' => '205000', 'quantity' => 1, 'hot' => '1', 'sale' => '50'),
-        array('id' =>'sp5', 'foodName' => 'Burger Tôm', 'image' => 'images/menus/Burger-Shrimp.jpg', 'price' => '45000', 'quantity' => 1, 'hot' => '0', 'sale' => '100'),
-        array('id' =>'sp6', 'foodName' => 'Cơm Gà Rán', 'image' => 'images/menus/Rice-F.Chicken.jpg', 'price' => '232000', 'quantity' => 1, 'hot' => '1', 'sale' => '50'),
-        array('id' =>'sp7', 'foodName' => '4 Phô Mai Viên', 'image' => 'images/menus/4-Chewy-Cheese.jpg', 'price' => '35000', 'quantity' => 1, 'hot' => '1', 'sale' => '100'),
-    );
     //if (isset($_SESSION['cart'])) echo count($_SESSION['cart']);
     ?>
 

@@ -49,7 +49,10 @@
 </div>
 <?php
 session_start();
+include 'connectDB.php';
+$products = connectDB();
 if (!isset($_SESSION['cart'])) $_SESSION['cart'] = array();
+/*
 $products = array(
     array('id' =>'sp1', 'foodName' => '1 Miếng Gà Rán', 'image' => 'images/menus/1-Fried-Chicken.jpg', 'price' => '36000', 'quantity' => 1, 'hot' => '1', 'sale' => '100'),
     array('id' =>'sp2', 'foodName' => '2 Miếng Gà Rán', 'image' => 'images/menus/2-Fried-Chicken.jpg', 'price' => '71000', 'quantity' => 1, 'hot' => '0', 'sale' => '50'),
@@ -63,6 +66,7 @@ $products = array(
     array('id' =>'sp10', 'foodName' => 'Combo nhóm 3', 'image' => 'images/D8-new.jpg', 'price' => '232000', 'quantity' => 1),
     array('id' =>'sp11', 'foodName' => 'Combo nhóm 4', 'image' => 'images/6-Fried-Chicken-new.jpg', 'price' => '205000', 'quantity' => 1),
 );
+*/
 // echo $_GET['id'];
 $id=$_GET['id'];
 $index=-1;
