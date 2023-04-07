@@ -147,6 +147,30 @@
         }
         ?>
     </div>
+    <div style="display: flex; justify-items: center; justify-content: center">
+        <img src="images/icon/kfc_logo_icon_181306.png" alt="" width="100" height="100">
+        <h1>Món ăn nổi bật</h1>
+    </div>
+    <div class = "abc">
+        <?php
+        foreach ($products as $index => $product) {
+            if($product['hot'] == 1) {
+                echo '<div class="sanpham">
+                    <form action="" method="post" style = "width: 350px;height: 490px; /*    border: 1px solid black; */background-color: #202124;">
+                    <a href="detailProduct.php?id=' . $product['id'] . '" target="_blank"><img src="' . $product['image'] . '" alt="" ></a>
+                        <div style="display: flex; justify-content: space-around;font-family: sans-serif; color: #FFFFFF; font-size: 20px;">
+                            <p>' . $product['foodName'] . '</p>
+                            <p>' . number_format($product['price'], 0, '', ','). ' đ' .'</p>
+                        </div>
+                        <input type="hidden" name="id" value="'.$product['id'].'">
+                        <input type="hidden" name="index" value="' . $index . '">
+                        <input type="submit" name="dathang" value="Đặt hàng" style="width: 300px; height: 55px; border-radius: 30px; border: none; background-color: #E4002B; margin-left: 6.5%;font-size: 17px; font-family: sans-serif; font-weight: 700; color: #FFFFFF;">
+                     </form>
+                    </div>';
+            }
+        }
+        ?>
+    </div>
     <?php
     //Thêm
     // sản
