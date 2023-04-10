@@ -10,6 +10,7 @@
 <body>
 <?php
 include 'database.php';
+include 'uploadImage.php';
 $kq = connectDB("SELECT id, foodName, image, price, quantity, hot, sale  FROM producttest");
 if(isset($_GET['edit'])) $index=$_GET['edit'];
 if(isset($_GET['del'])) {
@@ -21,6 +22,7 @@ if(isset($_POST["editProduct"])&&($_POST["editProduct"])){
     //lấy dữ liệu về từ form
     $id=$_POST['id'];
     $image=$_POST['image'];
+    //$image = uploadImage();
     $foodName=$_POST["foodName"];
     $quantity=1;
     $price=$_POST["price"];
@@ -31,8 +33,9 @@ if(isset($_POST["editProduct"])&&($_POST["editProduct"])){
 }
 if(isset($_POST["addProduct"])&&($_POST["addProduct"])){
     $id=$_POST['id'];
-    $image=$_POST['image'];
+    //$image=$_POST['image'];
     // $image=$target_file;
+    $image = uploadImage();
     $foodName=$_POST["foodName"];
     $price=$_POST["price"];
     $quantity=1;
@@ -61,7 +64,7 @@ if(isset($_POST["addProduct"])&&($_POST["addProduct"])){
 <div class="text-center">
     <h1>TRANG QUẢN LÝ</h1>
 </div>
-<form action="" method="post" class="m-4">
+<form action="" method="post" class="m-4" enctype="multipart/form-data">
     <div class="row">
         <div class="col-6">
             <label class="form-label">Nhập ID sản phẩm</label>
@@ -80,7 +83,9 @@ if(isset($_POST["addProduct"])&&($_POST["addProduct"])){
         <div class="col-6">
             <label class="form-label">Nhập URL hình ảnh</label>
             <input class="form-control" type="text" name="image" value="<?php if(isset($index)) echo $kq[$index]['image'] ?>">
-            <input type="submit" class="btn btn-primary my-3" name="addImage" value="Thêm ảnh">
+            <!--<input type="submit" class="btn btn-primary my-3" name="addImage" value="Thêm ảnh">-->
+            <label class="form-label">Tải hình ảnh sản phẩm</label>
+            <input type="file" class="form-control" name="fileToUpload">
             <br>
             <label class="form-label">Giá sản phẩm</label>
             <input class="form-control" type="text" name="price" value="<?php if(isset($index)) echo $kq[$index]['price'] ?>">
@@ -93,7 +98,7 @@ if(isset($_POST["addProduct"])&&($_POST["addProduct"])){
 <div class="card m-4">
     <div class="card-header">Quản lý sản phẩm</div>
     <div class="cart-body">
-        <table class="table table-sm">
+        <table class="table table-sm table-striped">
             <tr>
                 <th>STT</th>
                 <th>ID</th>

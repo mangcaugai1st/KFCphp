@@ -79,6 +79,9 @@
                     <label>Mật khẩu: </label>
                     <input type="password" placeholder="Enter Password" name="password" required>
                     <button name ="post" type="submit" style="width: 100%; height: 50px; border-radius: 30px;background-color: #f8012e; color: white; font-family: sans-serif; font-size: 20px; font-weight: 700">Đăng nhập</button>
+                    <button name ="" type="button" style="width: 100%; height: 50px; border-radius: 30px;background-color: #3b4dc9; color: white; font-family: sans-serif; font-size: 20px; font-weight: 700">
+                        <a style="text-decoration: none; color: white" href="register.php">Đăng ký</a>
+                    </button>
                     <h2>Hoặc tiếp tục với: </h2>
                     <button type="submit" style="width: 100%; height: 50px; border-radius: 30px;background-color: #3b5998; color: white; font-family: sans-serif; font-size: 20px; font-weight: 700">Đăng nhập bằng Facebook</button>
                     <button type="submit" style="width: 100%; height: 50px; border-radius: 30px; margin-top: 10px;background-color: #000; color: white; font-family: sans-serif; font-size: 20px; font-weight: 700">Đăng nhập bằng Apple</button>
@@ -89,22 +92,31 @@
     </tr>
 </table>
 <?php
-if (isset($_POST['post']))
-{
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    if ($_POST['password'] == '123' && $_POST['username'] == 'khoadmps27060@ftp.edu.vn')
+/*
+    if (isset($_POST['post']))
     {
-        echo "<script type='text/javascript'>alert('Đăng nhập thành công');</script>";
-        setcookie('username', $username, time()+10,"/");
-        setcookie('password', $password, time()+10,"/");
-        header('Location: menus.php');
-    }
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        if ($_POST['password'] == $password && $_POST['username'] == $username)
+        {
+            echo "<script type='text/javascript'>alert('Đăng nhập thành công');</script>";
+            setcookie('username', $username, time()+10,"/");
+            setcookie('password', $password, time()+10,"/");
+            header('Location: menus.php');
+        }
     else
     {
         echo "<script type='text/javascript'>alert('Đăng nhập thất bại');</script>";
     }
 }
+*/
+include 'connection.php';
+if (isset($_POST['post'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    checkLogin($username, $password);
+}
+
 ?>
 <div style="display: grid; background-color: #202124; grid-template-columns: 70% 30%">
     <div class="footer_text">
